@@ -1,0 +1,19 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_iq_group_mautic_id
+field_name: field_iq_group_mautic_id
+entity_type: user
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
