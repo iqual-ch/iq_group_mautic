@@ -56,8 +56,8 @@ class MauticSubscriber implements EventSubscriberInterface {
 
       $profile_data = [
         "drupal_id" => $user->id(),
-        "firstname" => $user->field_iq_group_first_name->value,
-        "lastname" => $user->field_iq_group_last_name->value,
+        "firstname" => reset($user->get('field_iq_user_base_address')->getValue())['given_name'],
+        "lastname" => reset($user->get('field_iq_user_base_address')->getValue())['family_name'],
         "token" => $user->field_iq_group_user_token->value,
         "preferred_locale" => $user->langcode->value,
       ];
