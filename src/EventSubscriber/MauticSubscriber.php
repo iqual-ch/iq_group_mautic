@@ -71,8 +71,6 @@ class MauticSubscriber implements EventSubscriberInterface {
         "preferred_locale" => $user->langcode->value,
       ];
 
-      if ($user->hasField('field_iq_group_tags') && !$user->get('field_iq_group_tags')->isEmpty()) {
-        $profile_data["tags"] = array_filter(array_column($user->field_iq_group_tags->getValue(), 'target_id'));
       // Add tags data if available
       if ($user->hasField('field_iq_group_tags')) {
         $profile_tags = [];
