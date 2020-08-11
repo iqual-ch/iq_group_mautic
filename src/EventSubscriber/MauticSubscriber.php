@@ -73,6 +73,32 @@ class MauticSubscriber implements EventSubscriberInterface {
 
       if ($user->hasField('field_iq_group_tags') && !$user->get('field_iq_group_tags')->isEmpty()) {
         $profile_data["tags"] = array_filter(array_column($user->field_iq_group_tags->getValue(), 'target_id'));
+      // Add tags data if available
+      if ($user->hasField('field_iq_group_tags')) {
+        $profile_tags = [];
+        
+        // Add new tags if set
+        if (!$user->get('field_iq_group_tags')->isEmpty()) {
+          foreach ($user->field_iq_group_tags as $tags) {
+            if ($tags->entity) {
+              $profile_tags[] = $tags->entity->label();
+            }
+          }
+        }
+
+        // Check previous user data if tags were removed
+        // then remove them with the "-" prefix from Mautic
+        if (!$user->original->get('field_iq_group_tags')->isEmpty()) {
+          foreach ($user->original->field_iq_group_tags as $tags) {
+            if ($tags->entity) {
+              if (array_search($tags->entity->label(), $profile_tags) === false) {
+                $profile_tags[] = "-" . $tags->entity->label();
+              }
+            }
+          }
+        }
+
+        $profile_data["tags"] = $profile_tags;
       }
       
       // Add branches data if available
