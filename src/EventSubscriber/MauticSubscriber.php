@@ -20,6 +20,13 @@ class MauticSubscriber implements EventSubscriberInterface {
    * @var \Drupal\mautic_api\MauticApiServiceInterface
    */
   protected $mauticApiService;
+  
+  /**
+   * General group of iq_group module setup (ignored in mautic)
+   * 
+   * @var int
+   */
+  protected $preferencesGeneralGroup;
 
   /**
    * OrderReceiptSubscriber constructor.
@@ -28,6 +35,7 @@ class MauticSubscriber implements EventSubscriberInterface {
    */
   public function __construct(MauticApiServiceInterface $mautic_api_service) {
     $this->mauticApiService = $mautic_api_service;
+    $this->preferencesGeneralGroup = \Drupal::config('iq_group.settings')->get('general_group_id');
   }
 
   /**
@@ -54,6 +62,7 @@ class MauticSubscriber implements EventSubscriberInterface {
 
       $email = $user->getEmail();
 
+      // Add base data
       $profile_data = [
         "drupal_id" => $user->id(),
         "firstname" => reset($user->get('field_iq_user_base_address')->getValue())['given_name'],
@@ -66,12 +75,20 @@ class MauticSubscriber implements EventSubscriberInterface {
         $profile_data["tags"] = array_filter(array_column($user->field_iq_group_tags->getValue(), 'target_id'));
       }
       
+      // Add branches data if available
       if ($user->hasField('field_iq_group_branches') && !$user->get('field_iq_group_branches')->isEmpty()) {
         $profile_data["branches"] = array_filter(array_column($user->field_iq_group_branches->getValue(), 'target_id'));
       }
 
+      // Add prefences data if available
       if ($user->hasField('field_iq_group_preferences') && !$user->get('field_iq_group_preferences')->isEmpty()) {
         $profile_data["preferences"] = array_filter(array_column($user->field_iq_group_preferences->getValue(), 'target_id'));
+
+        // Remove general group from preferences if present
+        $generalGroupKey = array_search($this->preferencesGeneralGroup, $profile_data["preferences"]);
+        if ($generalGroupKey !== false) {
+          unset($profile_data["preferences"][$generalGroupKey]);
+        }
       }
 
       // Create new Mautic contact if user hasn't been previously identified
