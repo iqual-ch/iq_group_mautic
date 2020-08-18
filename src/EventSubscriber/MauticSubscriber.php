@@ -104,6 +104,11 @@ class MauticSubscriber implements EventSubscriberInterface {
         $profile_data["branches"] = array_filter(array_column($user->field_iq_group_branches->getValue(), 'target_id'));
       }
 
+      // Add product data if available
+      if ($user->hasField('field_iq_group_products') && !$user->get('field_iq_group_products')->isEmpty()) {
+        $profile_data["products"] = array_filter(array_column($user->field_iq_group_products->getValue(), 'target_id'));
+      }
+
       // Add prefences data if available
       if ($user->hasField('field_iq_group_preferences') && !$user->get('field_iq_group_preferences')->isEmpty()) {
         $profile_data["preferences"] = array_filter(array_column($user->field_iq_group_preferences->getValue(), 'target_id'));
