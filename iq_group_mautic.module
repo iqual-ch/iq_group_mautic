@@ -1,0 +1,18 @@
+<?php
+
+use \Drupal\Core\Entity\EntityInterface;
+use \Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function iq_group_mautic_page_attachments(array &$build) {
+  $build['#cache']['contexts'][] = 'session';
+
+  $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+
+  if ($user->field_iq_group_mautic_id->value > 0) {
+    $build['#attached']['library'][] = 'iq_group_mautic/datalayer';
+    $build['#attached']['drupalSettings']['iq_group_mautic']['track'] = true;
+  }
+}

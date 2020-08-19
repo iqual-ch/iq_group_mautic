@@ -1,0 +1,7 @@
+datalayer:
+  version: VERSION
+  js:
+    resources/js/datalayer.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
