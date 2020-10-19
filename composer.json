@@ -9,6 +9,6 @@
     }
   ],
   "require": {
-    "drupal/iq_group":"*"
+    "iqual/iq_group":"*"
   }
 }
