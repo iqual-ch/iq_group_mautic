@@ -2,7 +2,7 @@ name: iQual Group Mautic Integration module
 description: Integration module for Mautic and iqual groups
 package: Custom
 type: module
-core: 8.x
+core_version_requirement: ^8.8 || ^9
 dependencies:
   - drupal:iq_group
   - mautic_api:mautic_api
