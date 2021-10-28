@@ -69,7 +69,7 @@ class MauticSubscriber implements EventSubscriberInterface {
         "firstname" => reset($user->get('field_iq_user_base_address')->getValue())['given_name'],
         "lastname" => reset($user->get('field_iq_user_base_address')->getValue())['family_name'],
         "token" => $user->field_iq_group_user_token->value,
-        "preferred_locale" => $user->langcode->value,
+        "preferred_locale" => $user->preferred_langcode->value,
       ];
 
       // Add tags data if available
