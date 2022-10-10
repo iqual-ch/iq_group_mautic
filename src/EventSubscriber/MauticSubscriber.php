@@ -6,9 +6,7 @@ use Drupal\iq_group_mautic\Event\IqGroupMauticEvent;
 use Drupal\iq_group\IqGroupEvents;
 use Drupal\iq_group\Event\IqGroupEvent;
 use Drupal\mautic_api\MauticApiServiceInterface;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 
@@ -69,7 +67,7 @@ class MauticSubscriber implements EventSubscriberInterface {
         "firstname" => reset($user->get('field_iq_user_base_address')->getValue())['given_name'],
         "lastname" => reset($user->get('field_iq_user_base_address')->getValue())['family_name'],
         "token" => $user->field_iq_group_user_token->value,
-        "preferred_locale" => $user->langcode->value,
+        "preferred_locale" => $user->preferred_langcode->value,
       ];
 
       // Add tags data if available

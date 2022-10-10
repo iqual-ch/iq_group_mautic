@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\user\Entity\User;
 use \Drupal\Core\Entity\EntityInterface;
 use \Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 
@@ -9,7 +10,7 @@ use \Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 function iq_group_mautic_page_attachments(array &$build) {
   $build['#cache']['contexts'][] = 'session';
 
-  $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  $user = User::load(\Drupal::currentUser()->id());
 
   if ($user->field_iq_group_mautic_id->value > 0) {
     $build['#attached']['library'][] = 'iq_group_mautic/datalayer';
