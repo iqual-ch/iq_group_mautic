@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "iqual/iq_group":"^2.0",
+    "iqual/iq_group":"^3.0",
     "drupal/mautic_api":"^1.0"
   }
 }
