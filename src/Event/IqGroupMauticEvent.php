@@ -2,7 +2,7 @@
 
 namespace Drupal\iq_group_mautic\Event;
 
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Event that is fired when a user is synchronized to mautic.
@@ -10,7 +10,7 @@ use Symfony\Component\EventDispatcher\Event;
 class IqGroupMauticEvent extends Event {
 
 
-  const MAUTIC_CONTACT_UPDATE = 'iq_group_mautic.mauticContactUpdate';
+  public const MAUTIC_CONTACT_UPDATE = 'iq_group_mautic.mauticContactUpdate';
 
   /**
    * The user data of the event.
