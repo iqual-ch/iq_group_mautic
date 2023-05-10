@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * Contains the iq Group Mautic API hooks.
  */
 
 use Drupal\user\Entity\User;

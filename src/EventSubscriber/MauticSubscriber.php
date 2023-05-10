@@ -13,12 +13,14 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class MauticSubscriber implements EventSubscriberInterface {
   /**
+   * Mautic API Service.
+   *
    * @var \Drupal\mautic_api\MauticApiServiceInterface
    */
   protected $mauticApiService;
 
   /**
-   * General group of iq_group module setup (ignored in mautic)
+   * General group of iq_group module setup (ignored in mautic).
    *
    * @var int
    */
@@ -28,6 +30,7 @@ class MauticSubscriber implements EventSubscriberInterface {
    * OrderReceiptSubscriber constructor.
    *
    * @param \Drupal\mautic_api\MauticApiServiceInterface $mautic_api_service
+   *   Mautic API Service.
    */
   public function __construct(MauticApiServiceInterface $mautic_api_service) {
     $this->mauticApiService = $mautic_api_service;

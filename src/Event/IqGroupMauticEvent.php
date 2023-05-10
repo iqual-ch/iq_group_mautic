@@ -24,23 +24,26 @@ class IqGroupMauticEvent extends Event {
    *
    * @var mixed
    */
-  public $profile_data = NULL;
+  public $profileData = NULL;
 
   /**
    * Constructs the object.
    *
-   * @param mixed
-   *   The user and his profile data.
+   * @param mixed $user
+   *   The user.
+   * @param mixed $profileData
+   *   The user's profile data.
    */
-  public function __construct(&$user, &$profile_data) {
+  public function __construct(&$user, &$profileData) {
     $this->user = &$user;
-    $this->profile_data = &$profile_data;
+    $this->profileData = &$profileData;
   }
 
   /**
    * Returns the user.
    *
    * @return mixed
+   *   The user.
    */
   public function &getUser() {
     return $this->user;
@@ -50,9 +53,10 @@ class IqGroupMauticEvent extends Event {
    * Returns the profile data of the user.
    *
    * @return mixed
+   *   The user's profile data.
    */
   public function &getProfileData() {
-    return $this->profile_data;
+    return $this->profileData;
   }
 
 }
