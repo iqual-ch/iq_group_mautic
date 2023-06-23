@@ -11,5 +11,12 @@
   "require": {
     "iqual/iq_group":"^3.0",
     "drupal/mautic_api":"^1.0"
+  },
+  "extra": {
+    "patches": {
+      "drupal/mautic_api": {
+        "#3340224: Allow contacts to be edited and deleted through the service": "https://git.drupalcode.org/project/mautic_api/-/merge_requests/1.diff"
+      }
+    }
   }
 }
