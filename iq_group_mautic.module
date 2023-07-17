@@ -1,7 +1,11 @@
 <?php
 
-use \Drupal\Core\Entity\EntityInterface;
-use \Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+/**
+ * @file
+ * Contains the iq Group Mautic API hooks.
+ */
+
+use Drupal\user\Entity\User;
 
 /**
  * Implements hook_page_attachments().
@@ -9,10 +13,10 @@ use \Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 function iq_group_mautic_page_attachments(array &$build) {
   $build['#cache']['contexts'][] = 'session';
 
-  $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  $user = User::load(\Drupal::currentUser()->id());
 
   if ($user->field_iq_group_mautic_id->value > 0) {
     $build['#attached']['library'][] = 'iq_group_mautic/datalayer';
-    $build['#attached']['drupalSettings']['iq_group_mautic']['track'] = true;
+    $build['#attached']['drupalSettings']['iq_group_mautic']['track'] = TRUE;
   }
 }
