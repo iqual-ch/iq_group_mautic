@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "iqual/iq_group":"^3.0",
+    "iqual/iq_group":"dev-misc/rework",
     "drupal/mautic_api":"^1.0"
   },
   "extra": {
