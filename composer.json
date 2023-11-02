@@ -10,7 +10,8 @@
   ],
   "require": {
     "iqual/iq_group":"^3.0",
-    "drupal/mautic_api":"^1.0"
+    "drupal/mautic_api":"^1.0",
+    "mautic/api-library":"3.1.0 as 2.16.1"
   },
   "extra": {
     "patches": {
