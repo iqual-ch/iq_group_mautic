@@ -18,7 +18,11 @@
   "extra": {
     "patches": {
       "drupal/mautic_api": {
-        "#3340224: Allow contacts to be edited and deleted through the service": "https://git.drupalcode.org/project/mautic_api/-/merge_requests/1.diff"
+        "#3340224: Allow contacts to be edited and deleted through the service": "https://git.drupalcode.org/project/mautic_api/-/merge_requests/1.diff",
+        "[https://dgo.to/3288470]: Automated Drupal 10 compatibility fixes": "https://www.drupal.org/files/issues/2023-04-05/mautic_api-3288470-05.patch"
+      },
+      "mautic/api-library": {
+        "[https://dgo.to/3288470]: Automated Drupal 10 compatibility fixes": "https://www.drupal.org/files/issues/2023-04-05/mautic-api-library-upgrade-from-3.0.0-to-3.1.0-273.patch"
       }
     }
   }
