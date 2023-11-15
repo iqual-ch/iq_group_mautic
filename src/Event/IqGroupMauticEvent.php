@@ -10,7 +10,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 class IqGroupMauticEvent extends Event {
 
 
-  public const MAUTIC_CONTACT_UPDATE = 'iq_group_mautic.mauticContactUpdate';
+  final public const MAUTIC_CONTACT_UPDATE = 'iq_group_mautic.mauticContactUpdate';
 
   /**
    * The user data of the event.

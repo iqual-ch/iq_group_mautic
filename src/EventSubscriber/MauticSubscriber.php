@@ -2,9 +2,9 @@
 
 namespace Drupal\iq_group_mautic\EventSubscriber;
 
-use Drupal\iq_group_mautic\Event\IqGroupMauticEvent;
-use Drupal\iq_group\IqGroupEvents;
 use Drupal\iq_group\Event\IqGroupEvent;
+use Drupal\iq_group\IqGroupEvents;
+use Drupal\iq_group_mautic\Event\IqGroupMauticEvent;
 use Drupal\mautic_api\MauticApiServiceInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -123,7 +123,7 @@ class MauticSubscriber implements EventSubscriberInterface {
 
       // Dispatch event so profile data can be further modified before sync.
       $event_dispatcher = \Drupal::service('event_dispatcher');
-      $event_dispatcher->dispatch(IqGroupMauticEvent::MAUTIC_CONTACT_UPDATE, new IqGroupMauticEvent($user, $profile_data));
+      $event_dispatcher->dispatch(new IqGroupMauticEvent($user, $profile_data), IqGroupMauticEvent::MAUTIC_CONTACT_UPDATE);
 
       // Create new Mautic contact if user hasn't been previously identified.
       if (empty($mautic_id) || $mautic_id == 0) {
