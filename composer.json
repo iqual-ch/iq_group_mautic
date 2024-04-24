@@ -18,6 +18,9 @@
     "patches": {
       "drupal/mautic_api": {
         "#3340224: Allow contacts to be edited and deleted through the service": "https://git.drupalcode.org/project/mautic_api/-/merge_requests/1.diff"
+      },
+      "mautic/api-library": {
+        "Fix PSR Logger incompatibility": "https://github.com/mautic/api-library/files/14497246/mautic_api_3.1.0_psr_log_v3.PATCH"
       }
     }
   }
