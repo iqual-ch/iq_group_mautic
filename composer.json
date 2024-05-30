@@ -12,7 +12,8 @@
     "php": "^8.1",
     "drupal/core": "^9.5 || ^10",
     "iqual/iq_group": "^4.0",
-    "drupal/mautic_api": "^1.0"
+    "drupal/mautic_api": "dev-1.x 8f92d26",
+    "mautic/api-library": "3.0.2"
   },
   "extra": {
     "patches": {
