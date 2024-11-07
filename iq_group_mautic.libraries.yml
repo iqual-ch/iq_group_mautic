@@ -1,5 +1,4 @@
 datalayer:
-  version: VERSION
   js:
     resources/js/datalayer.js: {}
   dependencies:
